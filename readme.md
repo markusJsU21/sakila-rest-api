@@ -20,6 +20,14 @@ Detta repo är byggt som en devcontainer. Det innebär att man med hjälp av Doc
 
 5. Nu initieras din utvecklingscontainer, det kan ta en liten stund. När den är klar kan du köra appen via 'npm start'
 
+## API-endpoints
+
+GET /actor
+GET /actor/:actorId
+POST /actor
+PUT /actor/:actorId
+DELETE /actor/:actorId
+
 ## Uppgift
 
 Uppgiften är att lägga till typescript och typa hela lösningen
