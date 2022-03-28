@@ -11,7 +11,15 @@ export const getActorById = async (actorId) => {
 }
 
 export const insertActor = async (actor) => {
-    const createdActor = await query('INSERT INTO actor(first_name, last_name, last_updated) VALUES($1, $2, current_timestamp) RETURNING *', [ actor.firstname, actor.lastname ]);
-    console.log(createdActor);
-    return createdActor;
+    const createdActor = await query('INSERT INTO actor(first_name, last_name, last_update) VALUES($1, $2, current_timestamp) RETURNING *', [ actor.firstname, actor.lastname ]);
+    return createdActor.rows[0];
+}
+
+export const updateActor = async (actorId, actor) => {
+    await query('UPDATE actor SET first_name=$1, last_name=$2, last_update=current_timestamp WHERE actor_id=$3 RETURNING *', [ actor.firstname, actor.lastname, actorId ]);
+    return await getActorById(actorId);
+}
+
+export const deleteActor = async (actorId) => {
+    return await query('DELETE FROM actor WHERE actor_id=$1', [ actorId ]);
 }
