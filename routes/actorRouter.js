@@ -1,5 +1,6 @@
 import express from 'express';
-import { getActorById, getActors } from '../db/actor.js';
+import { getActorById, getActors, insertActor } from '../db/actor.js';
+import { param, body, validationResult } from 'express-validator';
 
 const router = express.Router();
 
@@ -8,24 +9,46 @@ router.get('/', async (req, res) => {
     res.json(actors);
 })
 
-router.get('/:actorId', async (req, res) => {
-    if (!req.params.actorId) {
-        throw '404';
-    }
+router.get(
+    '/:actorId',
+    param('actorId').isInt(),
+    async (req, res) => {
 
-    try {
-        const actorId = parseInt(req.params.actorId);
-        console.log(actorId);
-    } catch {
-        throw '500';
-    }
+        const errors = validationResult(req);
 
-    const actor = await getActorById(req.params.actorId)
-    if (!actor) {
-        throw '404';
-    } else {
-        res.json(actor);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
+        const actor = await getActorById(req.params.actorId)
+        if (!actor) {
+            res.status(404).send();
+        } else {
+            res.json(actor);
+        }
+    })
+
+router.post(
+    '/actor',
+    body('firstname').isString(),
+    body('lastname').isString(),
+    async (req, res) => {
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
+        const actor = req.body;
+        const createdActor = await insertActor(actor);
+        
+        
+        if (!actor) {
+            res.status(404).send();
+        } else {
+            res.json(actor);
+        }
     }
-})
+)
 
 export default router;

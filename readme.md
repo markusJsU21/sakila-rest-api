@@ -19,3 +19,13 @@ Detta repo är byggt som en devcontainer. Det innebär att man med hjälp av Doc
 4. Sök och välj: Remote-Containers: Rebuild and Reopen in Container
 
 5. Nu initieras din utvecklingscontainer, det kan ta en liten stund. När den är klar kan du köra appen via 'npm start'
+
+## Uppgift
+
+Uppgiften är att lägga till typescript och typa hela lösningen
+
+## Tips / Övrigt
+
+- Skapa en fork av repot för att kunna commita egna ändringar
+- För validering används express-validator. För dokumentation se: https://express-validator.github.io/docs/
+- För att komma åt databasen finns tillägget SQLTools tillgängligt i utvecklingscontainern (istället för PGAdmin)
