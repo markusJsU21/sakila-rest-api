@@ -8,7 +8,9 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/actor', actorRouter);
+// app.use('/actor', actorRouter);
+// app.use('/', actorRouter)
+app.use(actorRouter)
 
 const port = 3030
 

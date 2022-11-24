@@ -1,5 +1,5 @@
 
- @baseUrl=http://localhost:3030/
+ @baseUrl=http://localhost:3030
 # @baseUrl=https://surveymonkey-development-ctrns.ondigitalocean.app/api
 
 POST {{baseUrl}}/survey
@@ -13,7 +13,8 @@ Content-Type: application/json
 }
 
 ###
-GET {{baseUrl}}/actor
+
+GET {{baseUrl}}/
 
 ###
-GET {{baseUrl}}/survey
+GET {{baseUrl}}/2
