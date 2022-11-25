@@ -13,7 +13,7 @@ export const getActorById = async (actorId: string) => {
 
 export const insertActor = async (actor: Actor) => {
     const createdActor = await query('INSERT INTO actor(first_name, last_name, last_update) VALUES($1, $2, current_timestamp) RETURNING *', [ actor.first_name, actor.last_name ]);
-    return createdActor.rows[0] as Actor[];
+    return createdActor.rows[0];
 }
 
 export const updateActor = async (actorId: string, actor: Actor) => {

@@ -5,10 +5,10 @@ import { param, body, validationResult } from 'express-validator';
 const router = express.Router();
 
 export type Actor = {
-    actor_id: number,
+    actor_id?: number,
     first_name: string,
     last_name: string,
-    last_update: Date
+    last_update?: Date
 }
 
 router.get('/', async (req, res) => {
@@ -37,8 +37,8 @@ router.get(
 
 router.post(
     '/',
-    body('firstname').isString(),
-    body('lastname').isString(),
+    body('first_name').isString(),
+    body('last_name').isString(),
     async (req, res) => {
         const errors = validationResult(req);
 
