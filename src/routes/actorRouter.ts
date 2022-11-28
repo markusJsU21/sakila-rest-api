@@ -60,8 +60,8 @@ router.post(
 router.put(
     '/:actorId',
     param('actorId').isInt(),
-    body('firstname').isString(),
-    body('lastname').isString(),
+    body('first_name').isString(),
+    body('last_name').isString(),
     async (req, res) => {
         const errors = validationResult(req);
 
