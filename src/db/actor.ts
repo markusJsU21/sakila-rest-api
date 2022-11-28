@@ -1,9 +1,10 @@
 import { query } from './db';
 import { Actor } from '../routes/actorRouter'
 
-export const getActors = async () => {
+export const getActors = async (): Promise<Actor[][]> => {
     const response = await query('SELECT * FROM actor LIMIT 100');
-    return response.rows as Actor[][];
+    return response.rows;
+    //OR return response.rows as Actor[][]
 }
 
 export const getActorById = async (actorId: string) => {

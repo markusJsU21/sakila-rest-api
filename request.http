@@ -15,4 +15,15 @@ Content-Type: application/json
 GET {{baseUrl}}/
 
 ###
+
 GET {{baseUrl}}/2
+
+###
+
+PUT {{baseUrl}}/202
+Content-Type: application/json
+
+{
+      "first_name": "Kalle",
+        "last_name": "Anka"
+}
